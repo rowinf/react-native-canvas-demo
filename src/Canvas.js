@@ -2,16 +2,12 @@
 import React, {Component} from 'react'
 import {View, WebView} from 'react-native'
 
+const defaultCss = '*{margin:0;padding:0;background-color:#222222;overflow:hidden}canvas{position:absolute;transform:translateZ(0);width:200px;height:200px}'
 
-function executor(render, context) {
+function executor(render, context, css) {
   const script =  `var canvas = document.querySelector('canvas');(${render.toString()}).call(${JSON.stringify(context)}, canvas)`
-  const template = `<style>*{margin:0;padding:0;}canvas{position:absolute;transform:translateZ(0);}</style><canvas><script>${script}</script></canvas>`
+  const template = `<style>${css}</style><canvas><script>${script}</script></canvas>`
   return template
-}
-
-function renderSource(argument) {
-
-  executor()
 }
 
 class Canvas extends Component {
@@ -19,18 +15,17 @@ class Canvas extends Component {
 
     const context = this.props.context
     const render = this.props.render
+    const css = this.props.css || defaultCss
 
     return (
-      <View>
-        <WebView
-          automaticallyAdjustContentInsets={false}
-          contentInset={{top: 0, right: 0, bottom: 0, left: 0}}
-          source={{html: executor(render, context)}}
-          opaque={false}
-          underlayColor={'transparent'}
-          style={this.props.style}
-        />
-      </View>
+      <WebView
+        automaticallyAdjustContentInsets={false}
+        contentInset={{top: -1, right: 0, bottom: 0, left: -1}}
+        source={{html: executor(render, context, css)}}
+        opaque={false}
+        underlayColor={'transparent'}
+        style={this.props.style}
+      />
     );
   }
 }

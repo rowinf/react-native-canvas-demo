@@ -15,7 +15,9 @@ class App extends Component {
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
-        <CanvasDemo />
+        <View style={styles.container}>
+          <CanvasDemo />
+        </View>
       </View>
     )
   }
