@@ -6,6 +6,8 @@ import {
   View
 } from 'react-native'
 
+import CanvasDemo from './CanvasDemo'
+
 class App extends Component {
   render () {
     return (
@@ -13,12 +15,7 @@ class App extends Component {
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
+        <CanvasDemo />
       </View>
     )
   }
