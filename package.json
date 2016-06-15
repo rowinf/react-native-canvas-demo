@@ -1,5 +1,5 @@
 {
-  "name": "rnative",
+  "name": "react-native-canvas-demo",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -8,5 +8,10 @@
   "dependencies": {
     "react": "^15.1.0",
     "react-native": "^0.27.0-rc2"
-  }
+  },
+  "description": "demo of canvas in a react native wrapper",
+  "main": "index.android.js",
+  "devDependencies": {},
+  "author": "Rob Irwin",
+  "license": "MIT"
 }
